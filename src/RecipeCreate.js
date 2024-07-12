@@ -22,6 +22,13 @@ function RecipeCreate({ createRecipe }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const isFormEmpty = Object.values(formData).some((value) => value.trim() === "");
+    if (isFormEmpty) {
+      alert("Please fill in all the recipe fields!");
+      return;
+    }
+
     createRecipe(formData);
     setFormData({ ...initialFormState });
   };
